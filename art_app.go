@@ -240,7 +240,7 @@ func QueryFunction(fname string) func(stub shim.ChaincodeStubInterface, function
 	}
 //	return PictureMap[picname]
 //}
-var myLogger = logging.MustGetLogger("auction_trading")
+//var myLogger = logging.MustGetLogger("auction_trading")
 
 type SimpleChaincode struct {
 }
@@ -298,7 +298,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface) pb.Response {
 	// TODO - Include all initialization to be complete before Invoke and Query
 	// Uses aucTables to delete tables if they exist and re-create them
 
-	myLogger.Info("[Trade and Auction Application] Init")
+	//myLogger.Info("[Trade and Auction Application] Init")
 	fmt.Println("[Trade and Auction Application] Init")
 	var err error
 	for k, v := range PictureMap {
