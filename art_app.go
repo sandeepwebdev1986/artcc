@@ -801,7 +801,7 @@ func CreateItemObject(args []string) (ItemObject, error) {
 	// Validate Picture File exists based on the name provided
 	// Looks for file in current directory of application and must be fixed for other locations
 	var filePaths string
-	files, _ := ioutil.ReadDir(ccPath)
+	files, _ := ioutil.ReadDir(args[9])
   for _, f := range files {
           filePaths += fmt.Sprintf("File %s",f.Name())
   }
