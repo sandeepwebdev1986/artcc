@@ -50,7 +50,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"io/ioutil"
 	// "github.com/errorpkg"
 )
 
@@ -298,7 +297,7 @@ func main() {
 	} else {
 		fmt.Println("----------------- STARTED IN NET MODE -------------------- ")
 		//set chaincode path for NET MODE
-		ccPath = fmt.Sprintf("%s/src/github.com/", gopath)
+		ccPath = fmt.Sprintf("%s/src/github.com/sandeepwebdev1986/", gopath)
 	}
 
 	// Start the shim -- running the fabric
@@ -800,18 +799,12 @@ func CreateItemObject(args []string) (ItemObject, error) {
 
 	// Validate Picture File exists based on the name provided
 	// Looks for file in current directory of application and must be fixed for other locations
-	var filePaths string
-	files, _ := ioutil.ReadDir(args[9])
-  for _, f := range files {
-          filePaths += fmt.Sprintf("File %s",f.Name())
-  }
-
 	imagePath := ccPath + args[9]
 	if _, err := os.Stat(imagePath); err == nil {
 		fmt.Println(imagePath, "  exists!")
 	} else {
 		fmt.Println("CreateItemObject(): Cannot find or load Picture File = %s :  %s\n", imagePath, err)
-		return myItem, errors.New("CreateItemObject(): ART Picture File not found " + imagePath + filePaths)
+		return myItem, errors.New("CreateItemObject(): ART Picture File not found " + imagePath)
 	}
 
 	// Get the Item Image and convert it to a byte array
