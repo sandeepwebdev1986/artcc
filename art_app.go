@@ -297,7 +297,7 @@ func main() {
 	} else {
 		fmt.Println("----------------- STARTED IN NET MODE -------------------- ")
 		//set chaincode path for NET MODE
-		ccPath = fmt.Sprintf("%s/src/github.com/hyperledger/fabric/auction/art/artchaincode/", gopath)
+		ccPath = fmt.Sprintf("%s/src/github.com/hyperledger/fabric/", gopath)
 	}
 
 	// Start the shim -- running the fabric
@@ -799,9 +799,7 @@ func CreateItemObject(args []string) (ItemObject, error) {
 
 	// Validate Picture File exists based on the name provided
 	// Looks for file in current directory of application and must be fixed for other locations
-
-
-	imagePath := args[9]
+	imagePath := ccPath + args[9]
 	if _, err := os.Stat(imagePath); err == nil {
 		fmt.Println(imagePath, "  exists!")
 	} else {
