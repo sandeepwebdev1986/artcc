@@ -804,7 +804,7 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		fmt.Println(imagePath, "  exists!")
 	} else {
 		fmt.Println("CreateItemObject(): Cannot find or load Picture File = %s :  %s\n", imagePath, err)
-		return myItem, errors.New("CreateItemObject(): ART Picture File not found " + imagePath + err)
+		return myItem, errors.New("CreateItemObject(): ART Picture File not found " + imagePath + fmt.Sprintf("%s", err))
 	}
 
 	// Get the Item Image and convert it to a byte array
