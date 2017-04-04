@@ -297,7 +297,7 @@ func main() {
 	} else {
 		fmt.Println("----------------- STARTED IN NET MODE -------------------- ")
 		//set chaincode path for NET MODE
-		ccPath = fmt.Sprintf("%s/src/github.com/ITPeople-Blockchain/auction/art/artchaincode/", gopath)
+		ccPath = fmt.Sprintf("%s/src/github.com/", gopath)
 	}
 
 	// Start the shim -- running the fabric
@@ -804,7 +804,7 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		fmt.Println(imagePath, "  exists!")
 	} else {
 		fmt.Println("CreateItemObject(): Cannot find or load Picture File = %s :  %s\n", imagePath, err)
-		return myItem, errors.New("CreateItemObject(): ART Picture File not found " + imagePath)
+		return myItem, errors.New("CreateItemObject(): ART Picture File not found " + imagePath + err)
 	}
 
 	// Get the Item Image and convert it to a byte array
