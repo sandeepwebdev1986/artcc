@@ -236,24 +236,7 @@ func QueryFunction(fname string) func(stub shim.ChaincodeStubInterface, function
 
 //func GetPictureUrl(picname string) string {
 	var PictureMap = map[string]string {
-		"art1.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art1.png",
-		"art2.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art2.png",
-		"art3.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art3.png",
-		"art4.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art4.png",
-		"art5.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art5.png",
-		"art6.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art6.png",
-		"art7.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art7.png",
-		"item-001.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-001.jpg",
-		"item-002.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-002.jpg",
-		"item-003.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-003.jpg",
-		"item-004.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-004.jpg",
-		"item-005.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-005.jpg",
-		"item-006.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-006.jpg",
-		"item-007.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-007.jpg",
-		"item-008.jpg":    "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/item-008.jpg",
-		"people.gif":      "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/people.gif",
-		"mad-fb.jpg":      "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/mad-fb.gif",
-		"sample.png":      "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/sample.png",
+		"art1.png":        "https://raw.githubusercontent.com/ITPeople-Blockchain/auction/v0.6/art/artchaincode/art1.png"
 	}
 //	return PictureMap[picname]
 //}
