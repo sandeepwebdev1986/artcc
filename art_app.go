@@ -37,7 +37,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	//"github.com/op/go-logging"
+	"github.com/op/go-logging"
 	"image"
 	"image/gif"
 	"image/jpeg"
@@ -366,7 +366,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	// TODO - Include all initialization to be complete before Invoke and Query
 	// Uses aucTables to delete tables if they exist and re-create them
 
-	//myLogger.Info("[Trade and Auction Application] Init")
+	myLogger.Info("[Trade and Auction Application] Init")
 	fmt.Println("[Trade and Auction Application] Init")
 	var err error
 
@@ -387,6 +387,14 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	}
 
 
+	for k, v := range PictureMap {
+
+				myLogger.Info(fmt.Sprintf("\n Downloading Image '%s' from URL:  %s", k, v))
+					err = downloadFile(k, v)
+					if err != nil {
+						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
+					}
+		}
 
 
 	fmt.Errorf("Init() Initialization Complete  : ", args)
@@ -846,14 +854,6 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		return myItem, errors.New("CreateItemObject(): ART ID should be an integer create failed!")
 	}
 
-	for k, v := range PictureMap {
-
-				myLogger.Info(fmt.Sprintf("\n Downloading Image '%s' from URL:  %s", k, v))
-	        err = downloadFile(k, v)
-					if err != nil {
-						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
-					}
-		}
 
 
 
