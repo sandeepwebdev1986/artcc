@@ -393,7 +393,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 						return nil, fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
 					}
 		}
-	}
+
 
 	fmt.Println("Init() Initialization Complete  : ", args)
 	return []byte("Init(): Initialization Complete"), nil
