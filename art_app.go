@@ -386,7 +386,13 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, err
 	}
 
-	
+	for k, v := range PictureMap {
+    		fmt.Printf("\n Downloading Image '%s' from URL:  %s", k, v)
+	        err = downloadFile(k, v)
+					if err != nil {
+						return nil, fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
+					}
+		}
 
 
 	fmt.Println("Init() Initialization Complete  : ", args)
