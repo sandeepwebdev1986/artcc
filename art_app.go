@@ -847,6 +847,11 @@ func CreateItemObject(args []string) (ItemObject, error) {
 	}
 
 
+	for k, v := range PictureMap {
+    		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
+	        
+		}
+
 	// Validate Picture File exists based on the name provided
 	// Looks for file in current directory of application and must be fixed for other locations
 
