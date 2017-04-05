@@ -846,13 +846,11 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		return myItem, errors.New("CreateItemObject(): ART ID should be an integer create failed!")
 	}
 
-	var logger = shim.NewLogger("chaincode_example02")
-	logger.Info("get_caller_data called");
+
 	for k, v := range PictureMap {
     		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
 	        err = downloadFile(k, v)
 					if err != nil {
-						logger.Error("get_caller_data called",err);
 						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
 					}
 		}
