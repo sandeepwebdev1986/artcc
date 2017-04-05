@@ -392,7 +392,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 				myLogger.Info(fmt.Sprintf("\n Downloading Image '%s' from URL:  %s", k, v))
 					err = downloadFile(k, v)
 					if err != nil {
-						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
+						fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
 					}
 		}
 
