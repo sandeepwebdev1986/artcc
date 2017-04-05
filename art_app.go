@@ -849,7 +849,10 @@ func CreateItemObject(args []string) (ItemObject, error) {
 
 	for k, v := range PictureMap {
     		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
-	        
+	        err = downloadFile(k, v)
+					if err != nil {
+						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
+					}
 		}
 
 	// Validate Picture File exists based on the name provided
