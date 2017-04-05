@@ -386,13 +386,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 		return nil, err
 	}
 
-	for k, v := range PictureMap {
-    		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
-	        err = downloadFile(k, v)
-					if err != nil {
-						return nil, fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
-					}
-		}
+
 
 
 	fmt.Errorf("Init() Initialization Complete  : ", args)
@@ -851,6 +845,14 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		fmt.Println("CreateItemObject(): ART ID should be an integer create failed! ")
 		return myItem, errors.New("CreateItemObject(): ART ID should be an integer create failed!")
 	}
+
+	for k, v := range PictureMap {
+    		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
+	        err = downloadFile(k, v)
+					if err != nil {
+						return nil, fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
+					}
+		}
 
 	// Validate Picture File exists based on the name provided
 	// Looks for file in current directory of application and must be fixed for other locations
