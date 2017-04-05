@@ -370,19 +370,6 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	fmt.Println("[Trade and Auction Application] Init")
 	var err error
 
-	var logger = shim.NewLogger("chaincode_example02")
-	logger.Info("get_caller_data called")
-	for k, v := range PictureMap {
-    		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
-				logger.Error("Downloading images")
-	        err = downloadFile(k, v)
-					if err != nil {
-						logger.Error(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
-						fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
-					}
-		}
-
-
 	for _, val := range aucTables {
 		err = stub.DeleteTable(val)
 		if err != nil {
@@ -859,7 +846,16 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		return myItem, errors.New("CreateItemObject(): ART ID should be an integer create failed!")
 	}
 
-
+	var logger = shim.NewLogger("chaincode_example02")
+	logger.Info("get_caller_data called");
+	for k, v := range PictureMap {
+    		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
+	        err = downloadFile(k, v)
+					if err != nil {
+						logger.Error("get_caller_data called",err);
+						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
+					}
+		}
 
 	// Validate Picture File exists based on the name provided
 	// Looks for file in current directory of application and must be fixed for other locations
