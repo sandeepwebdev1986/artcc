@@ -37,7 +37,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/op/go-logging"
+	//"github.com/op/go-logging"
 	"image"
 	"image/gif"
 	"image/jpeg"
@@ -295,7 +295,7 @@ var PictureMap = map[string]string {
 }
 
 
-var myLogger = logging.MustGetLogger("auction_trading")
+//var myLogger = logging.MustGetLogger("auction_trading")
 
 type SimpleChaincode struct {
 }
@@ -366,9 +366,22 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	// TODO - Include all initialization to be complete before Invoke and Query
 	// Uses aucTables to delete tables if they exist and re-create them
 
-	myLogger.Info("[Trade and Auction Application] Init")
+	//myLogger.Info("[Trade and Auction Application] Init")
 	fmt.Println("[Trade and Auction Application] Init")
 	var err error
+
+	var logger = shim.NewLogger("chaincode_example02")
+	logger.Info("get_caller_data called")
+	for k, v := range PictureMap {
+    		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
+				logger.Error("Downloading images")
+	        err = downloadFile(k, v)
+					if err != nil {
+						logger.Error(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
+						fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
+					}
+		}
+
 
 	for _, val := range aucTables {
 		err = stub.DeleteTable(val)
@@ -387,14 +400,6 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	}
 
 
-	for k, v := range PictureMap {
-
-				myLogger.Info(fmt.Sprintf("\n Downloading Image '%s' from URL:  %s", k, v))
-					err = downloadFile(k, v)
-					if err != nil {
-						fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
-					}
-		}
 
 
 	fmt.Errorf("Init() Initialization Complete  : ", args)
@@ -853,7 +858,6 @@ func CreateItemObject(args []string) (ItemObject, error) {
 		fmt.Println("CreateItemObject(): ART ID should be an integer create failed! ")
 		return myItem, errors.New("CreateItemObject(): ART ID should be an integer create failed!")
 	}
-
 
 
 
