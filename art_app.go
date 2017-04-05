@@ -50,7 +50,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	
+
 	// "github.com/errorpkg"
 )
 
@@ -389,9 +389,9 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string
 	for k, v := range PictureMap {
     		fmt.Printf("\n Downloading Image '%s' from URL:  %s", k, v)
 	        err = downloadFile(k, v)
-	        if err != nil {
-	        	fmt.Println(err)
-			return shim.Error("Invoke: Invalid Function Name - function names begin with a q or i")
+					if err != nil {
+						return nil, fmt.Errorf("Init(): InitLedger of %s  Failed ", err)
+					}
 		}
 	}
 
