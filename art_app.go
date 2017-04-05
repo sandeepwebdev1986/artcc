@@ -850,7 +850,7 @@ func CreateItemObject(args []string) (ItemObject, error) {
     		fmt.Errorf("\n Downloading Image '%s' from URL:  %s", k, v)
 	        err = downloadFile(k, v)
 					if err != nil {
-						return myItem, errors.New(fmt.Errorf("Init(): InitLedger of %s  Failed ", err))
+						return myItem, errors.New(fmt.Sprintf("Init(): InitLedger of %s  Failed ", err))
 					}
 		}
 
