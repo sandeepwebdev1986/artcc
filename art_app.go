@@ -342,11 +342,11 @@ func main() {
 	if len(os.Args) == 2 && strings.EqualFold(os.Args[1], "DEV") {
 		fmt.Println("----------------- STARTED IN DEV MODE -------------------- ")
 		//set chaincode path for DEV MODE
-		ccPath = fmt.Sprintf("%s/src/github.com/hyperledger/fabric/auction/art/artchaincode/", gopath)
+		ccPath = fmt.Sprintf("%s/src/github.com/artcc", gopath)
 	} else {
 		fmt.Println("----------------- STARTED IN NET MODE -------------------- ")
 		//set chaincode path for NET MODE
-		ccPath = fmt.Sprintf("%s/src/github.com/ITPeople-Blockchain/auction/art/artchaincode/", gopath)
+		ccPath = fmt.Sprintf("%s/src/github.com/artcc/", gopath)
 	}
 
 	// Start the shim -- running the fabric
